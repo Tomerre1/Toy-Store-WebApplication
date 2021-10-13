@@ -1,0 +1,46 @@
+* {
+    box-sizing: border-box;
+}
+
+::selection {
+    background-color: $clr1;
+    color: #fff;
+}
+
+html {
+    font-family: montserrat, sans-serif;
+    color: $clr2;
+    box-sizing: border-box;
+}
+
+body {
+    height: 100vh;
+    margin: 0;
+    font-family: montserrat, sans-serif;
+    box-sizing: border-box;
+}
+
+img {
+    width: 100%;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-weight: 400;
+    font-family: caveat, serif;
+    text-transform: uppercase;
+    margin: 0 0 2rem;
+}
+
+p {
+    margin: 0 0 2rem;
+    max-width: 46ch;
+}
+
+a {
+    text-decoration: none;
+}

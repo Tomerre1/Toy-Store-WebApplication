@@ -1,0 +1,89 @@
+.toy-filter {
+    margin-block-start: 20px;
+    .filter {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        gap: 20px;
+
+        .inputs {
+            padding-block-end: 20px;
+            & input[type="search"],
+            & input[type="radio"] {
+                margin-inline-end: 20px;
+            }
+        }
+    }
+}
+
+.toggle_radio {
+    display: flex;
+    justify-content: center;
+    overflow: hidden;
+    padding: 0;
+    border-radius: 2px;
+    position: relative;
+    width: 100%;
+    text-align: center;
+}
+
+.toggle_radio > * {
+    float: left;
+}
+
+.toggle_radio input[type="radio"] {
+    display: none;
+    z-index: 0;
+}
+
+.toggle_label {
+    display: flex;
+    justify-content: flex-start;
+    flex-direction: column;
+    border: 1px solid #00a3e0;
+    border-radius: 2px;
+    cursor: pointer;
+    font-weight: bold;
+    width: 20%;
+    margin: 0 $gutter;
+    color: #00a3e0;
+
+    &:hover,
+    &:focus,
+    &:active {
+        background: rgba(#cccccc, 0.1);
+    }
+}
+
+:checked + .toggle_label {
+    color: #ffffff;
+    // background-color: #86bc25;
+    border-color: #00a3e0;
+    transition: all 0.6s ease;
+}
+
+.toggle_option_slider {
+    display: flex;
+    width: calc(20% - (#{$gutter} * 2));
+    height: 4rem;
+    position: absolute;
+    top: 0;
+    border: 1px solid transparent;
+    border-radius: 2px;
+    // margin: 0 $gutter;
+    transition: all 0.4s ease;
+}
+
+%toggle--core {
+    background: #00a3e0;
+}
+
+#first_toggle:checked ~ .toggle_option_slider {
+    @extend %toggle--core;
+    left: calc(30% + #{$gutter});
+}
+
+#second_toggle:checked ~ .toggle_option_slider {
+    @extend %toggle--core;
+    left: calc(50% + #{$gutter});
+}

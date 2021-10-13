@@ -1,0 +1,81 @@
+.review {
+    margin: 10px;
+    color: #212529;
+    box-shadow: 0 8px 24px rgba(149, 157, 165, 20%);
+    padding: 0.625em;
+    margin-bottom: 1rem;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    min-width: 250px;
+    max-width: 250px;
+    overflow: hidden;
+    word-wrap: break-word;
+    &-header {
+        display: flex;
+        align-items: center;
+        margin-block-start: 10px;
+        > :not(:last-child) {
+            margin-inline-end: 1em;
+        }
+        > :nth-child(2) {
+            font-weight: bold;
+        }
+        > p {
+            margin: 0;
+        }
+    }
+    .review-comment {
+        width: 100%;
+        text-align: center;
+        word-wrap: break-word;
+        .toy-name {
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+    }
+    .delete-review {
+        position: absolute;
+        top: 0;
+        right: 0;
+        border: 0;
+        background: transparent;
+        font-size: 24px;
+    }
+    > :last-child {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        color: rgba(160, 160, 158, 0.752941);
+    }
+}
+// .review {
+//     background: linear-gradient(to right, #ece9e6, #ffffff);
+//     box-shadow: rgba(67, 71, 85, 0.27) 0px 0px 0.25em, rgba(90, 125, 188, 0.05) 0px 0.25em 1em;
+//     margin: 1rem;
+//     padding: 0.5rem;
+//     position: relative;
+//     max-height: 100px;
+//     display: flex;
+//     flex-direction: column;
+//     gap: 5px;
+//     justify-content: center;
+//     .checked {
+//         color: orange;
+//     }
+//     .ratings {
+//         display: flex;
+//         justify-content: center;
+//         align-items: center;
+//     }
+//     .delete-review {
+//         position: absolute;
+//         top: 0;
+//         right: 0;
+//         border: 0;
+//         background: transparent;
+//         font-size: 24px;
+//     }
+// }

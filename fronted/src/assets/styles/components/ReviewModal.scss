@@ -1,0 +1,15 @@
+.review-add {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    text-align: center;
+    align-items: center;
+    .modal-body {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+    }
+    .modal-rating {
+        order: -1;
+    }
+}

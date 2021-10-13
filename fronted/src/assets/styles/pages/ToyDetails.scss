@@ -1,0 +1,198 @@
+@mixin bp($bp, $min-max: min-width) {
+    $em: $bp/16;
+
+    @media (#{$min-max}: #{$em}em) {
+        @content;
+    }
+}
+
+.container {
+    width: 100%;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    display: flex;
+    gap: 10px;
+    margin-block-start: 50px;
+
+    h5 {
+        text-transform: uppercase;
+        margin: 0;
+        font-size: 14px;
+    }
+
+    ul {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+    }
+
+    .product {
+        &-image {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            background: linear-gradient(to bottom, $pgt 0%, $pgb 100%);
+            justify-content: center;
+            width: 100%;
+        }
+
+        &-details {
+            background-color: white;
+            border-radius: 0 0 20px 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 100%;
+            gap: 10px;
+            .details-btns {
+                display: flex;
+                gap: 10px;
+            }
+            .title {
+                text-transform: uppercase;
+                margin: 0;
+                font-weight: 900;
+                font-size: 40px;
+            }
+
+            .price {
+                font-weight: 700;
+                margin-top: 5px;
+                font-size: 18px;
+
+                .current {
+                    color: $discount;
+                    margin-left: 6px;
+                }
+            }
+
+            .before {
+                text-decoration: line-through;
+            }
+
+            header {
+                margin-bottom: 50px;
+                position: relative;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+            }
+
+            article {
+                > h5 {
+                    margin: 0;
+                }
+
+                > p {
+                    color: $gray;
+                    margin: 0.5em 0;
+                    font-size: 14px;
+                    line-height: 1.6;
+                }
+            }
+
+            .controls {
+                > div {
+                    flex: 1;
+                }
+                .toy-labels {
+                    display: flex;
+                    gap: 10px;
+
+                    .label {
+                        background-color: #f2c16b;
+                        border-radius: 6px;
+                        padding: 0.3125em 0.625em;
+                        &-green {
+                            padding: 0.3125em 0.625em;
+                            background-color: #4caf50;
+                            border-radius: 6px;
+                        }
+                        &-red {
+                            padding: 0.3125em 0.625em;
+                            background-color: #f44336;
+                            border-radius: 6px;
+                        }
+                    }
+                }
+
+                > div + div {
+                    margin-top: 20px;
+                    flex: none;
+                }
+            }
+
+            .back {
+                border: 0;
+                padding: 15px 25px;
+                align-self: center;
+                border-radius: 7px;
+                cursor: pointer;
+                background: linear-gradient(to bottom, $bgt 0%, $bgb 100%);
+                box-shadow: 0 10px 30px 0 rgba($bgt, 0.7);
+                transition: 200ms;
+                text-decoration: none;
+
+                &:hover {
+                    background: linear-gradient(to bottom, $bgb 0%, $bgt 100%);
+                }
+
+                > span {
+                    font-size: 18px;
+                    text-transform: uppercase;
+                    font-weight: 700;
+                    margin-left: 10px;
+                    color: white;
+                }
+            }
+        }
+    }
+}
+
+@include bp(600) {
+    .product-details {
+        .controls > div {
+            &.qty {
+                width: 60px;
+            }
+        }
+
+        .controls > div + div {
+            border-left: 2px solid rgba($gray, 0.5);
+            padding-left: 25px;
+            padding-right: 25px;
+            width: 100px;
+            margin-top: 0;
+        }
+
+        .controls {
+            display: flex;
+        }
+    }
+}
+
+@include bp(900) {
+    .container {
+        display: flex;
+        flex-direction: row;
+        align-items: normal;
+        margin-block-start: 50px;
+    }
+
+    .product-image {
+        border-radius: 20px 0 0 20px;
+        max-width: 330px;
+    }
+
+    .product-pic {
+        left: -40px;
+        max-width: 330px;
+    }
+
+    .product-details {
+        width: 100%;
+        border-radius: 0 20px 20px 0;
+    }
+}

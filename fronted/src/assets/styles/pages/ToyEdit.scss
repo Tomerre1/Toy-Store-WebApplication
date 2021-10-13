@@ -1,0 +1,33 @@
+.edit-toy {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    gap: 20px;
+    flex: 1;
+
+    > button {
+        flex: 1;
+        border: 0;
+        padding: 15px 25px;
+        align-self: center;
+        border-radius: 7px;
+        cursor: pointer;
+        background: linear-gradient(to bottom, $bgt 0%, $bgb 100%);
+        box-shadow: 0 10px 30px 0 rgba($bgt, 0.7);
+        transition: 200ms;
+        text-decoration: none;
+
+        &:hover {
+            background: linear-gradient(to bottom, $bgb 0%, $bgt 100%);
+        }
+        > span {
+            font-size: 18px;
+            text-transform: uppercase;
+            font-weight: 700;
+            margin-left: 10px;
+            color: white;
+        }
+    }
+}

@@ -1,0 +1,37 @@
+// Setup
+@import "../styles/setup/variables.scss";
+@import "../styles/setup/functions.scss";
+@import "../styles/setup/mixins.scss";
+@import "../styles/setup/typography.scss";
+
+// Basics
+@import "../styles/basics/helpers.scss";
+@import "../styles/basics/layout.scss";
+@import "../styles/basics/base.scss";
+@import "../styles/basics/buttons.scss";
+
+
+
+//Pages
+@import "./pages/ToyHome.scss";
+@import "../styles/pages/ToyDetails.scss";
+@import "../styles/pages/ToyEdit.scss";
+@import "../styles/pages/ToyApp.scss";
+@import "../styles/pages/ToyLogin.scss";
+@import "../styles/pages/ToyUserDetails.scss";
+
+//Cmps
+@import "../styles/components/ToyPreview.scss";
+@import "../styles/components/ToyFilter.scss";
+@import "../styles/components/ToyHeader.scss";
+@import "../styles/components/ToyChart.scss";
+@import "../styles/components/MyMap.scss";
+@import "../styles/components/ReviewList.scss";
+@import "../styles/components/ReviewPreview.scss";
+@import "../styles/components/ToyList.scss";
+@import "../styles/components/ToyAdd.scss";
+@import "../styles/components/ReviewModal.scss";
+@import "../styles/components/ToyFooter.scss";
+@import "../styles/components/ToyMessages.scss";
+@import "../styles/components/ToyUserEdit.scss";
+

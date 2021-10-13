@@ -1,0 +1,123 @@
+.navbar {
+    width: 100%;
+    height: 55px;
+    border-bottom: 2px solid #f1f1f1;
+    padding: 0 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 -3px 10px 3px rgba(0, 0, 0, 0.2);
+
+    .logo {
+        align-self: start;
+        img {
+            object-fit: cover;
+            width: 50px;
+        }
+    }
+    @media (max-width: 768px) {
+        display: flex;
+        justify-content: space-around;
+        flex-flow: column nowrap;
+    }
+}
+
+.burger {
+    width: 3rem;
+    height: 2rem;
+    position: fixed;
+    top: 14px;
+    right: 20px;
+    z-index: 20;
+    display: none;
+    cursor: pointer;
+    position: absolute;
+    @media (max-width: 768px) {
+        display: flex;
+        justify-content: space-around;
+        flex-flow: column nowrap;
+    }
+
+    .burgers {
+        width: 2rem;
+        height: 0.25rem;
+        background-color: #333;
+        border-radius: 10px;
+        transform-origin: 1px;
+        transition: all 0.3s linear;
+    }
+    &.open {
+        display: flex;
+        .burgers:nth-child(1) {
+            transform: rotate(0);
+        }
+        .burgers:nth-child(1).open {
+            transform: rotate(45deg);
+        }
+        .burgers:nth-child(2) {
+            transform: translateX(0);
+            opacity: 1;
+        }
+        .burgers:nth-child(2).open {
+            transform: translateX(100%);
+            opacity: 0;
+        }
+        .burgers:nth-child(3) {
+            transform: rotate(0);
+        }
+        .burgers:nth-child(3).open {
+            transform: rotate(-45deg);
+        }
+    }
+}
+
+.right-nav {
+    list-style: none;
+    display: flex;
+    flex-flow: row nowrap;
+    z-index: 1;
+    margin: 0;
+    gap: 20px;
+    align-items: center;
+    padding: 0;
+
+    li {
+        padding: 18px 10px;
+    }
+
+    a {
+        width: 100%;
+        text-align: center;
+        color: #333;
+        padding: 20px;
+        &.active {
+            color: #ff7518;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+        }
+    }
+    @media (max-width: 768px) {
+        flex-flow: column nowrap;
+        background-color: #787878;
+        position: fixed;
+        top: 0;
+        right: 0;
+        height: 100vh;
+        width: 200px;
+        padding-top: 3.5rem;
+        transform: translateX(100%);
+        transition: transform 0.3s ease-in-out;
+        &.open {
+            transform: translateX(0);
+        }
+
+        li {
+            color: #fff;
+        }
+        a {
+            color: white;
+            &.active {
+                background-color: #f1f1f1;
+            }
+        }
+    }
+}

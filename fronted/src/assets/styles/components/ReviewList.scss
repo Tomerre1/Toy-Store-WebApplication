@@ -1,0 +1,8 @@
+.reviews-list {
+    display: flex;
+    flex-wrap: wrap;
+    overflow-y: scroll;
+    max-height: 250px;
+    max-width: 310px;
+    flex-direction: row-reverse;
+}

@@ -1,0 +1,198 @@
+@import url("https://fonts.googleapis.com/css2?family=Lato:wght@400;700;900&display=swap");
+:root {
+    --light-bg: #f4f4f4;
+}
+
+.card {
+    padding: 3rem;
+    .reviews-list {
+        /* overflow-y: unset; */
+        /* max-height: unset; */
+        max-width: unset;
+        max-height: 58vh;
+    }
+}
+
+.card__header {
+    display: flex;
+    margin-top: -15px;
+    align-items: center;
+    justify-content: center;
+}
+
+.card__name {
+    margin-left: 1.25rem;
+    p {
+        font-weight: bold;
+        font-size: 1.1rem;
+        margin: 0;
+    }
+}
+
+.card__handle {
+    display: flex;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    margin-top: 3px;
+}
+
+.card__button {
+    margin-left: auto;
+}
+
+.card__button button {
+    display: flex;
+    align-items: center;
+    font-size: 1.05rem;
+    background-color: #323232;
+    color: white;
+    font-weight: bold;
+    border: none;
+    height: 40px;
+    width: 100px;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    cursor: pointer;
+}
+
+.card__button button:active {
+    transform: scale(0.96);
+}
+
+.card__heading {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.border {
+    border-radius: 5px;
+    height: 2px;
+    background-color: #eee;
+    border: none;
+    margin: 1.25rem 0;
+}
+
+.heading {
+    font-weight: bold;
+    font-size: 1.1rem;
+}
+
+.insights {
+    margin: 2rem 0;
+    display: flex;
+    flex: 1;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.insights .insight {
+    width: 280px;
+    padding: 1rem;
+    border-radius: 8px;
+    outline: 2px solid var(--border);
+    transition: all 200ms ease-in-out;
+}
+
+.insights .insight:hover {
+    color: white;
+    background-color: var(--primary);
+    outline: none;
+}
+
+.insights .insight .heading {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+}
+
+.insights .insight .heading .score {
+    margin-left: auto;
+}
+
+.insights .insight .heading .score span {
+    color: #44c790;
+}
+
+.insights .insight .heading span {
+    font-size: 0.8rem;
+}
+
+.insight + .insight {
+    margin-left: 1rem;
+}
+
+.number {
+    font-size: 1.5rem;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: justify;
+    -ms-flex-pack: justify;
+    justify-content: space-between;
+    font-weight: bold;
+    margin-top: 15px;
+}
+
+.number .info {
+    font-size: 0.75rem;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    font-weight: normal;
+}
+
+.number .info svg {
+    height: 15px;
+    width: 15px;
+}
+
+@media (max-width: 1381px) {
+    .insights {
+        -webkit-box-pack: center;
+        -ms-flex-pack: center;
+        justify-content: center;
+    }
+    .insights .insight:nth-child(3) {
+        margin-top: 1rem;
+    }
+}
+
+@media (max-width: 990px) {
+    .insights {
+        -webkit-box-pack: center;
+        -ms-flex-pack: center;
+        justify-content: center;
+    }
+    .insights .insight + .insight {
+        margin: 0;
+        margin-top: 1rem;
+    }
+}
+
+@media (max-width: 740px) {
+    .card {
+        width: 90%;
+    }
+    .navlinks {
+        display: none;
+    }
+}
+
+@media (max-width: 545px) {
+    .card__button button {
+        width: 40px;
+        -webkit-box-pack: center;
+        -ms-flex-pack: center;
+        justify-content: center;
+    }
+
+}
