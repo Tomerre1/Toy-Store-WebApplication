@@ -1,9 +1,11 @@
 import React from 'react';
 import { Doughnut } from 'react-chartjs-2';
 
-export function ToyChartDoughnut({ data }) {
+export function ToyChartDoughnut({ data, toys }) {
+    let toyPrices = toys.map(toy => toy.price).sort((a, b) => a - b);
+    toyPrices = [...new Set(toyPrices)];
     const toyData = {
-        labels: ['150', '199', '255', '400', '800', '1000'],
+        labels: toyPrices,
         datasets: [
             {
                 label: '# of Toys',

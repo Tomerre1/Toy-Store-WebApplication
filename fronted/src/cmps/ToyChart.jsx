@@ -2,9 +2,11 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { ToyChartPie } from './ToyChartPie';
 import { ToyChartDoughnut } from './ToyChartDoughnut';
+import { useSelector } from 'react-redux';
 
-
-const _ToyChart = ({ toys }) => {
+const _ToyChart = () => {
+    const toys = useSelector(state => state.toyModule.toys)
+    console.log('%c  toys:', 'color: white;background: red;', toys);
     const calcChartPie = () => {
         const toyTypes = ['On wheels', 'Box game', 'Art', 'Baby', 'Doll', 'Puzzle', 'Outdoor'];
         const toyCounts = [];
@@ -21,7 +23,8 @@ const _ToyChart = ({ toys }) => {
     }
 
     const calcChartDoughnut = () => {
-        const toyPrices = [150, 199, 255, 400, 800, 1000];
+        let toyPrices = toys.map(toy => toy.price).sort((a, b) => a - b);
+        toyPrices = [...new Set(toyPrices)];
         const toyCounts = [];
         for (let i = 0; i < toyPrices.length; i++) {
             toyCounts.push(0);
@@ -43,7 +46,7 @@ const _ToyChart = ({ toys }) => {
             <div className="chart">
                 <h1>Price statistics:</h1>
                 <div>
-                    <ToyChartDoughnut data={calcChartDoughnut()} />
+                    <ToyChartDoughnut data={calcChartDoughnut()} toys={toys} />
                 </div>
             </div>
         </div>

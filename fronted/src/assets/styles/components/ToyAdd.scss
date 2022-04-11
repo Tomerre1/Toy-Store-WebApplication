@@ -6,8 +6,8 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    border: 1px solid black;
     input {
-        background-color: $clr5;
         height: 40px;
         border-radius: 5px;
         outline: 0;
@@ -16,10 +16,13 @@
         margin-inline-end: 10px;
         margin-bottom: 10px;
         width: 100%;
+        border: 1px solid black;
     }
     .select {
         width: 100%;
         margin-bottom: 20px;
+        border: 1px solid black;
+        border-radius: 6px;
     }
     .add-btns {
         display: flex;
@@ -45,9 +48,15 @@
                 opacity: 0.6;
             }
             &.add {
+                display: flex;
+                align-items: center;
+                justify-content: center;
                 background-color: #1dc80e;
             }
             &.cancel {
+                display: flex;
+                align-items: center;
+                justify-content: center;
                 background-color: #b42a12;
             }
         }

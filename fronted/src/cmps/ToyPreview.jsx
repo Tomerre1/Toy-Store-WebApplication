@@ -7,7 +7,7 @@ export function ToyPreview({ toy, onRemoveToy, onEditToy, user }) {
                 <p>{toy.name}</p>
                 <img src={`https://robohash.org/${toy.name}`} alt="toy" />
                 <span><p>Price:{toy.price.toLocaleString()}$</p></span>
-                {!toy.inStock && <span className="sold-out">Sold out</span>}
+                {!toy.inStock.value && <span className="sold-out">Sold out</span>}
                 {user && user.isAdmin && <div className="toy-preview-btns">
                     <button onClick={(event) => { event.preventDefault(); event.stopPropagation(); onRemoveToy(toy._id) }} className="trash-btn"><i className="fas fa-trash"></i></button>
                     <button onClick={(event) => { event.preventDefault(); event.stopPropagation(); onEditToy(toy._id) }} className="edit-btn"><i className="fas fa-edit"></i></button>
