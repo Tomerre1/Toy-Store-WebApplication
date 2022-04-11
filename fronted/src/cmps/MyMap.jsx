@@ -88,7 +88,7 @@ class _MyMap extends Component {
                     containerStyle={style}
                 >
 
-                    {this.acordionBranchContent.map((currBranch,idx) => (
+                    {this.acordionBranchContent.map((currBranch, idx) => (
                         <Marker key={idx}
                             position={currBranch.position}
                             name={currBranch.heading}
@@ -132,5 +132,5 @@ class _MyMap extends Component {
 }
 
 export const MyMap = GoogleApiWrapper({
-    apiKey: ('AIzaSyDCdZ8RItKP9Q3-hCXKS3HqnfnRXbpVLk8')
+    apiKey: 'AIzaSyBt9sd91oGMMUTkT3NIS4oMPBRxyAHNZEs'
 })(_MyMap)
