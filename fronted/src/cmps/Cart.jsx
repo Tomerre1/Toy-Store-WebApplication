@@ -2,7 +2,7 @@ import React from 'react'
 import { useSelector } from 'react-redux'
 import { CartItemPreview } from './CartItemPreview'
 
-export function Cart({ isMobile }) {
+export function Cart() {
     const isShoppingCart = useSelector(state => state.systemModule.isShoppingCart)
     const user = useSelector(state => state.userModule.user)
     const userTotalCart = user && user.cart ? user.cart.reduce((acc, curr) => acc + curr.price, 0) : 0
@@ -19,7 +19,7 @@ export function Cart({ isMobile }) {
                     </div>
                 </div>
                 <ul class="shopping-cart-items">
-                    {user?.cart?.map((item, i) => <CartItemPreview cartItem={item} key={i} />)}
+                    {user?.cart?.map((item, i) => <CartItemPreview cartItem={item} user={user} key={i} />)}
                 </ul>
                 <a href="#" class="button">Checkout</a>
             </div>

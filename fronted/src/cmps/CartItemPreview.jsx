@@ -1,6 +1,11 @@
 import React from 'react'
-
-export function CartItemPreview({ cartItem }) {
+import CloseIcon from '@mui/icons-material/Close';
+import { onDeleteItemCart } from '../store/user.actions'
+export function CartItemPreview({ user, cartItem }) {
+    const handleDelete = async () => {
+        await onDeleteItemCart(user, cartItem)
+        console.log('%c  cartItem:', 'color: white;background: red;', cartItem);
+    }
     return (
         <li class="clearfix">
             <img src={`https://robohash.org/${cartItem.name}`} alt="item1" />
@@ -9,6 +14,7 @@ export function CartItemPreview({ cartItem }) {
                 <span class="item-price">${cartItem.price}</span>
                 <span class="item-quantity">Quantity: 01</span>
             </div>
+            <CloseIcon onClick={handleDelete} />
         </li>
     )
 }

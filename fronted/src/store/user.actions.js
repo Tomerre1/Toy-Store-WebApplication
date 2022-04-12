@@ -77,8 +77,7 @@ export function onAddCart(user, toy) {
             })
     }
 }
-
-export function onRemoveCart(user, toy) {
+export function onDeleteItemCart(user, toy) {
     return (dispatch) => {
         userService.update({ ...user, cart: user.cart.filter(currToy => currToy._id !== toy._id) })
             .then(() => dispatch({
@@ -92,3 +91,4 @@ export function onRemoveCart(user, toy) {
             })
     }
 }
+
