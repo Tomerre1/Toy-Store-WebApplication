@@ -17,6 +17,8 @@
 }
 
 .toggle_radio {
+    --btn-width: 160px;
+    --btn-height: 60px;
     display: flex;
     justify-content: center;
     overflow: hidden;
@@ -44,8 +46,8 @@
     border-radius: 2px;
     cursor: pointer;
     font-weight: bold;
-    width: 20%;
-    margin: 0 $gutter;
+    width: var(--btn-width);
+    margin: 0;
     color: #00a3e0;
 
     &:hover,
@@ -64,7 +66,7 @@
 
 .toggle_option_slider {
     display: flex;
-    width: calc(20% - (#{$gutter} * 2));
+    width: var(--btn-width);
     height: 4rem;
     position: absolute;
     top: 0;
@@ -80,10 +82,85 @@
 
 #first_toggle:checked ~ .toggle_option_slider {
     @extend %toggle--core;
-    left: calc(30% + #{$gutter});
+    left: calc(var(--btn-width) * 2);
+    @media screen and (max-width: 768px) {
+        left: calc(var(--btn-width) * 0.04);
+    }
 }
 
 #second_toggle:checked ~ .toggle_option_slider {
     @extend %toggle--core;
-    left: calc(50% + #{$gutter});
+    left: calc(var(--btn-width) * 3);
+    @media screen and (max-width: 768px) {
+        left: calc(var(--btn-width) * 1.04);
+    }
+}
+
+.switches-container {
+    --btn-width: 2.7rem;
+    width: calc(6rem * 2);
+    position: relative;
+    display: flex;
+    padding: 0;
+    position: relative;
+    background: #00a3e0;
+    line-height: 6rem;
+    border-radius: 6rem;
+    z-index: 0; 
+    & input {
+        visibility: hidden;
+        position: absolute;
+        top: 0;
+        &:nth-of-type(1):checked ~ .switch-wrapper {
+            transform: translateX(calc(6rem * 0));
+        }
+        &:nth-of-type(2):checked ~ .switch-wrapper {
+            transform: translateX(calc(6rem * 1));
+        }
+        &:nth-of-type(3):checked ~ .switch-wrapper {
+            transform: translateX(calc(6rem * 2));
+        }
+        &:nth-of-type(1):checked ~ .switch-wrapper .switch div:nth-of-type(1),
+        &:nth-of-type(2):checked ~ .switch-wrapper .switch div:nth-of-type(2),
+        &:nth-of-type(3):checked ~ .switch-wrapper .switch div:nth-of-type(3) {
+            opacity: 1;
+        }
+    }
+    & label {
+        width: 6rem;
+        padding: 0;
+        margin: 0;
+        text-align: center;
+        cursor: pointer;
+        color: white;
+    }
+    .switch-wrapper {
+        display: flex;
+        gap: 10px;
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        width: 6rem;
+        padding: 0.15rem;
+        z-index: 3;
+        transition: transform 0.5s cubic-bezier(0.77, 0, 0.175, 1);
+        .switch {
+            border-radius: 6rem;
+            background: white;
+            height: 100%;
+            width: 100%;
+            & div {
+                width: 100%;
+                text-align: center;
+                opacity: 0;
+                display: block;
+                color: black;
+                transition: opacity 0.2s cubic-bezier(0.77, 0, 0.175, 1) 0.125s;
+                will-change: opacity;
+                position: absolute;
+                top: 0;
+                left: 0;
+            }
+        }
+    }
 }

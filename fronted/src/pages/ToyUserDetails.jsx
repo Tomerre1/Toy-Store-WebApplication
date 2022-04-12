@@ -44,7 +44,7 @@ class _ToyUserDetails extends React.Component {
             <div className="card">
                 <div className="card__header">
                     <div className="card__profile">
-                        <Avatar >{user.fullname[0].toUpperCase()}</Avatar>
+                        <Avatar >{(user.fullname && user?.fullname[0].toUpperCase()) || ''}</Avatar>
                     </div>
                     <div className="card__name">
                         <p>Hi, {user.fullname}</p>

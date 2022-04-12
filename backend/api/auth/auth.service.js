@@ -27,7 +27,7 @@ async function signup(username, password, fullname) {
     if (user) return Promise.reject('User already exist')
 
     const hash = await bcrypt.hash(password, saltRounds)
-    return userService.add({ username, password: hash, fullname })
+    return userService.add({ username, password: hash, fullname, cart: [] })
 }
 
 module.exports = {

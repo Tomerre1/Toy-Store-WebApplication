@@ -6,10 +6,12 @@ import { onLogin, onLogout, onSignup } from '../store/user.actions.js'
 import { UserMsg } from './user-msg.jsx'
 import { Burger } from './Burger.jsx'
 import toyLogo from '../assets/img/toyLogo.svg'
+import { setIsShoppingCart } from '../store/system.actions'
+import { Cart } from './Cart'
 class _ToyHeader extends React.Component {
     state = {
         open: false,
-        isMobile: false
+        isMobile: false,
     }
 
     componentDidMount() {
@@ -45,6 +47,9 @@ class _ToyHeader extends React.Component {
         })
     }
 
+    toggleCart = () => {
+        this.props.setIsShoppingCart(!this.props.isShoppingCart)
+    }
     render() {
         const { user } = this.props
         return (
@@ -52,8 +57,16 @@ class _ToyHeader extends React.Component {
                 <div className="navbar">
                     <div className="logo">
                         <Link to="/"><img src={toyLogo} alt="logo" /></Link>
+                        {user && <a className="cart-symbol" id="cart" onClick={this.toggleCart} style={{ width: this.state.isMobile ? '240px' : '320px' }}>
+                            <i class="fa fa-shopping-cart"></i> Cart
+                            <span class="badge">3</span>
+                            <Cart isMobile={this.state.isMobile} />
+                        </a>}
+
                     </div>
+
                     <Burger user={user} onLogout={this.onLogout} open={this.state.open} toggleOpen={this.toggleOpen} />
+
                 </div>
                 <UserMsg />
             </>
@@ -64,12 +77,14 @@ class _ToyHeader extends React.Component {
 function mapStateToProps(state) {
     return {
         user: state.userModule.user,
+        isShoppingCart: state.systemModule.isShoppingCart
     }
 }
 const mapDispatchToProps = {
     onLogin,
     onSignup,
-    onLogout
+    onLogout,
+    setIsShoppingCart
 }
 
 export const ToyHeader = connect(mapStateToProps, mapDispatchToProps)(_ToyHeader)

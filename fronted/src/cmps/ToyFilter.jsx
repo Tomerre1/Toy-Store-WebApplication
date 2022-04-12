@@ -8,7 +8,16 @@ const animatedComponents = makeAnimated();
 export class ToyFilter extends React.Component {
     state = {
         selectedOptions: [],
+        checkedToggle: 'All'
     };
+
+    optionsSlider = [{
+        name: 'inStock', label: 'All',
+        value: false
+    }, {
+        name: 'inStock', label: 'In Stock',
+        value: true
+    }]
 
     options = [
         { value: 'On wheels', label: 'On wheels' },
@@ -57,16 +66,23 @@ export class ToyFilter extends React.Component {
                         options={this.options}
                     />
 
-
-                    <div className="toggle_radio">
-                        <input value={false} name="inStock" onChange={handleChange} type="radio" className="toggle_option" id="first_toggle" />
-                        <label className="toggle_label" htmlFor="first_toggle">All</label>
-                        <input value={true} name="inStock" onChange={handleChange} type="radio" className="toggle_option" id="second_toggle" />
-                        <label className="toggle_label" htmlFor="second_toggle">Stock</label>
-                        <div className="toggle_option_slider"></div>
+                    <div className="center">
+                        <div className="switches-container">
+                            {this.optionsSlider.map((option) => <input
+                                type="radio"
+                                onChange={(event) => { handleChange(event); this.setState((prevState) => ({ ...prevState, checkedToggle: option.label })) }}
+                                id={option.label}
+                                name={option.name}
+                                value={option.value}
+                                checked={this.state.checkedToggle === option.label} />)}
+                            {this.optionsSlider.map((option) => <label htmlFor={option.label}>{option.label}</label>)}
+                            < div className="switch-wrapper" >
+                                <div className="switch">
+                                    {this.optionsSlider.map((option) => <div>{option.label}</div>)}
+                                </div>
+                            </div>
+                        </div>
                     </div>
-
-
                 </div>
 
             </form >
