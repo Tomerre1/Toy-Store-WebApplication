@@ -9,7 +9,7 @@ import { ToyMessages } from '../cmps/ToyMessages'
 import { ToyPopup } from '../cmps/ToyPopup'
 import { addReview, loadReviews, removeReview } from '../store/review.actions'
 import ChatRoundedIcon from '@mui/icons-material/ChatRounded';
-
+import { onAddCart } from '../store/user.actions'
 
 
 
@@ -59,6 +59,12 @@ export class _ToyDetails extends React.Component {
 
     removeToyReview = async (reviewId) => {
         await this.props.removeReview(reviewId)
+    }
+
+    addToCart = async () => {
+        await this.props.onAddCart(this.props.user, this.state.toy)
+        console.log('%c  this.state.toy:', 'color: white;background: red;', this.state.toy);
+        console.log('%c  this.props.user:', 'color: white;background: red;', this.props.user);
     }
 
     render() {
@@ -115,6 +121,9 @@ export class _ToyDetails extends React.Component {
                         {user && <button className="back" onClick={this.toggleReviewAdd}>
                             <span>Add Review</span>
                         </button>}
+                        {user && this.state.toy?.inStock.value && <button className="back" onClick={this.addToCart}>
+                            <span>Add To Cart</span>
+                        </button>}
                     </div>
                     <ReviewModal open={isReviewAdd} addToyReview={this.addToyReview} toggleModal={this.toggleModal} />
                 </div>
@@ -136,6 +145,7 @@ const mapDispatchToProps = {
     loadReviews,
     removeReview,
     addReview,
+    onAddCart
 }
 
 export const ToyDetails = connect(mapStateToProps, mapDispatchToProps)(_ToyDetails)

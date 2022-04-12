@@ -63,3 +63,32 @@ export function onEditUser(user) {
             })
     }
 }
+export function onAddCart(user, toy) {
+    return (dispatch) => {
+        userService.update({ ...user, cart: [...user.cart, toy] })
+            .then(() => dispatch({
+                type: 'ADD_CART',
+                user,
+                toy
+            }))
+            .catch(err => {
+                showErrorMsg('Cannot update')
+                console.log('Cannot update user', err)
+            })
+    }
+}
+
+export function onRemoveCart(user, toy) {
+    return (dispatch) => {
+        userService.update({ ...user, cart: user.cart.filter(currToy => currToy._id !== toy._id) })
+            .then(() => dispatch({
+                type: 'REMOVE_CART',
+                user,
+                toy
+            }))
+            .catch(err => {
+                showErrorMsg('Cannot update')
+                console.log('Cannot update user', err)
+            })
+    }
+}

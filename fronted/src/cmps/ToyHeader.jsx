@@ -59,7 +59,7 @@ class _ToyHeader extends React.Component {
                         <Link to="/"><img src={toyLogo} alt="logo" /></Link>
                         {user && <a className="cart-symbol" id="cart" onClick={this.toggleCart} style={{ width: this.state.isMobile ? '240px' : '320px' }}>
                             <i class="fa fa-shopping-cart"></i> Cart
-                            <span class="badge">3</span>
+                            <span class="badge">{user.cart.length > 0 ? user.cart.length : ''}</span>
                             <Cart isMobile={this.state.isMobile} />
                         </a>}
 

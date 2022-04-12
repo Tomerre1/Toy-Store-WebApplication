@@ -126,26 +126,33 @@
 
             .back {
                 border: 0;
-                padding: 15px 25px;
                 align-self: center;
                 border-radius: 7px;
+                padding: 10px 15px;
+                font-size: 14px;
+                color: black;
+                font-weight: 400;
                 cursor: pointer;
                 background: linear-gradient(to bottom, $bgt 0%, $bgb 100%);
                 box-shadow: 0 10px 30px 0 rgba($bgt, 0.7);
                 transition: 200ms;
                 text-decoration: none;
-
+                @include for-normal-layout {
+                    padding: 15px 25px;
+                    font-size: 24px;
+                    font-weight: 400;
+                }
                 &:hover {
                     background: linear-gradient(to bottom, $bgb 0%, $bgt 100%);
                 }
+            }
 
-                > span {
-                    font-size: 18px;
-                    text-transform: uppercase;
-                    font-weight: 700;
-                    margin-left: 10px;
-                    color: white;
-                }
+            > span {
+                font-size: 18px;
+                text-transform: uppercase;
+                font-weight: 700;
+                margin-left: 10px;
+                color: white;
             }
         }
     }
