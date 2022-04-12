@@ -139,7 +139,7 @@ class _ToyLoginSignup extends React.Component {
                         </Grid>
                     </div>
                     <br />
-                    <Accordion className="about-acord" allowZeroExpanded allowMultipleExpanded>
+                    {/* <Accordion className="about-acord" allowZeroExpanded allowMultipleExpanded>
                         {this.AcordionContent.map((singleAccordion, idx) =>
                         (<AccordionItem key={idx}>
                             <AccordionItemHeading>
@@ -154,7 +154,7 @@ class _ToyLoginSignup extends React.Component {
                             </AccordionItemPanel>
                         </AccordionItem>)
                         )}
-                    </Accordion>
+                    </Accordion> */}
                 </Container>
             </>
         );
