@@ -9,6 +9,7 @@
   "scripts": {
     "start": "node server.js",
     "dev": "nodemon --ignore \"./data\" server.js",
+    "heroku-postbuild": "webpack -p",
     "heroku-prebuild": "npm install --dev"
   },
   "keywords": [],
