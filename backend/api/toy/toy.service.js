@@ -65,7 +65,7 @@ function _buildCriteria(filterBy) {
     const criteria = {}
     if (filterBy.name) criteria.name = { $regex: filterBy.name, $options: 'i' }
 
-    if (filterBy.inStock === 'true') criteria.inStock = { $eq: true }
+    if (filterBy.inStock === 'true') {criteria.inStock = { $eq: true }}
 
     if (filterBy.selectedOptions && filterBy.selectedOptions.length > 0) {
         criteria.labels = { $all: filterBy.selectedOptions }

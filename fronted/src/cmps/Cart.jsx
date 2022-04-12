@@ -5,13 +5,13 @@ import { CartItemPreview } from './CartItemPreview'
 export function Cart({ isMobile }) {
     const isShoppingCart = useSelector(state => state.systemModule.isShoppingCart)
     const user = useSelector(state => state.userModule.user)
-    const userTotalCart = user.cart.reduce((acc, curr) => acc + curr.price, 0)
+    const userTotalCart = user && user.cart ? user.cart.reduce((acc, curr) => acc + curr.price, 0) : 0
     return (
         <div class="container">
             <div class="shopping-cart" style={{ display: isShoppingCart ? 'block' : 'none', width: '320px' }} onClick={(event) => event.stopPropagation()} >
                 <div class="shopping-cart-header">
                     <div>
-                        <i class="fa fa-shopping-cart cart-icon"></i><span class="badge">{user.cart.length > 0 ? user.cart.length : ''}</span>
+                        <i class="fa fa-shopping-cart cart-icon"></i><span class="badge">{user?.cart?.length > 0 ? user.cart.length : ''}</span>
                     </div>
                     <div class="shopping-cart-total">
                         <span class="lighter-text">Total:</span>
@@ -19,7 +19,7 @@ export function Cart({ isMobile }) {
                     </div>
                 </div>
                 <ul class="shopping-cart-items">
-                    {user.cart.map((item, i) => <CartItemPreview cartItem={item} key={i} />)}
+                    {user?.cart?.map((item, i) => <CartItemPreview cartItem={item} key={i} />)}
                 </ul>
                 <a href="#" class="button">Checkout</a>
             </div>

@@ -46,7 +46,7 @@ export class ToyAdd extends React.Component {
     onSubmit = (ev) => {
         ev.preventDefault()
         const { onAddToy, onToggleAdd } = this.props
-        onAddToy(this.state.toy)
+        onAddToy({ ...this.state.toy, inStock: this.state.toy.inStock.value })
         onToggleAdd()
     }
 

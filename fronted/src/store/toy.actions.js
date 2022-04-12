@@ -68,6 +68,8 @@ export function onEditToy(toyToSave) {
 }
 
 export function handleChange(event, filterBy) {
+    console.log('%c  filterBy:', 'color: white;background: red;', filterBy);
+    console.log('%c  event, filterBy:', 'color: white;background: red;', event, filterBy);
     return (dispatch) => {
         var name, value;
         var filter;

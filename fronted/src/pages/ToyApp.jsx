@@ -24,6 +24,7 @@ class _ToyApp extends React.Component {
     }
 
     onAddToy = (toy) => {
+        console.log('%c  toy:', 'color: white;background: red;', toy);
         toy.labels = toy.labels.map(option => option.label)
         this.props.onAddToy(toy)
         this.onToggleAdd()
