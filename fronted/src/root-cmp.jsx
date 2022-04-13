@@ -1,13 +1,26 @@
 import React from 'react'
-
-// const { Switch, Route } = ReactRouterDOM
 import { Switch, Route } from 'react-router'
-
 import routes from './routes.js'
-
+import { Accessibility } from 'accessibility/src/main';
 import { ToyHeader } from './cmps/ToyHeader.jsx'
 
 export class RootCmp extends React.Component {
+    componentDidMount() {
+        const options = {
+            icon: {
+                position: {
+                    bottom: { size: 0, units: 'px' },
+                    left: { size: 0, units: 'px' },
+                    type: 'fixed'
+                }
+            }
+        }
+        window.addEventListener('load', function () { new Accessibility(options); }, false);
+    }
+
+    componentWillUnmount() {
+        window.removeEventListener('load', function () { new Accessibility(); }, false);
+    }
 
     render() {
         return (

@@ -13,6 +13,7 @@ export class ToyMessages extends React.Component {
         user: this.props.user,
         typingMsg: null,
     }
+    elRef = React.createRef();
 
     componentDidMount() {
         socketService.setup()
@@ -78,6 +79,7 @@ export class ToyMessages extends React.Component {
             message: { text: '', date: null },
 
         }))
+        this.scrollToBottom()
     }
 
     aiResponse = () => {
@@ -97,6 +99,14 @@ export class ToyMessages extends React.Component {
 
     }
 
+    scrollToBottom = () => {
+        console.log('%c  this.elRef.current.scrollHeight:', 'color: white;background: red;', this.elRef);
+        this.elRef.current.scroll({
+            top: this.elRef.current.scrollHeight,
+            behavior: "smooth",
+        });
+        // document.getElementById('messages').scrollIntoView({ behavior: 'smooth', top: 'bottom' });
+    };
 
     render() {
         const { messages, message, typingMsg } = this.state
@@ -105,10 +115,10 @@ export class ToyMessages extends React.Component {
                 <div className="chat-box">
                     <h1>Lets Chat</h1>
                     {typingMsg && <p>{typingMsg}</p>}
-                    <div className="chat-content">
+                    <div className="chat-content" id="messages" ref={this.elRef}>
                         <ToyMessageList messages={messages} />
                     </div>
-                    <div className="chat-controller">
+                    <div className="chat-controller" >
                         <form className="flex justify-space-between" onSubmit={this.onSubmitMessage}>
                             <TextField required variant="outlined" label="Chat with me" type="text" name="chat-input" value={message.text} onChange={this.onChangeMessage} />
                             <Button type="submit" color="primary"><SendIcon /></Button>
