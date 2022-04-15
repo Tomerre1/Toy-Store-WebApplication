@@ -120,12 +120,12 @@ export class _ToyDetails extends React.Component {
                         <Link to="/toy" className="back" type="button">
                             <span>Back Toys</span>
                         </Link>
-                        {user && <button className="back" onClick={this.toggleReviewAdd}>
+                        {user && <a className="back" onClick={this.toggleReviewAdd}>
                             <span>Add Review</span>
-                        </button>}
-                        {user && this.state.toy?.inStock && <button className="back" onClick={this.addToCart}>
+                        </a>}
+                        {user && this.state.toy?.inStock && <a className="back" onClick={this.addToCart}>
                             <span>Add To Cart</span>
-                        </button>}
+                        </a>}
                     </div>
                     <ReviewModal open={isReviewAdd} addToyReview={this.addToyReview} toggleModal={this.toggleModal} />
                 </div>
