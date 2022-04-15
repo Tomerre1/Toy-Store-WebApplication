@@ -7,6 +7,7 @@ import { ToyChart } from './cmps/ToyChart'
 import { ToyLoginSignup } from './pages/ToyLoginSignup'
 import { ToyUserDetails } from './pages/ToyUserDetails'
 import { ToyReviews } from './pages/ToyReviews'
+import { Loader } from './cmps/Loader'
 const routes = [
     {
         path: '/',

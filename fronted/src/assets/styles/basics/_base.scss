@@ -52,12 +52,12 @@ a {
 }
 
 .loader {
-    display: flex;
-    align-items: center;
-    justify-self: center;
+    // display: flex;
+    // align-items: center;
+    // justify-self: center;
     position: fixed;
-    top: 50%;
-    // left: 50%;
+    top: 45%;
+    left: 35%;
     -webkit-transform: translate(-50%, -50%);
     transform: translate(-50%, -50%);
     border: 16px solid #f3f3f3;
@@ -67,6 +67,10 @@ a {
     height: 120px;
     -webkit-animation: spin 2s linear infinite;
     animation: spin 2s linear infinite;
+    @include for-normal-layout {
+        top: 50%;
+        left: 45%;
+    }
 }
 
 @keyframes spin {
