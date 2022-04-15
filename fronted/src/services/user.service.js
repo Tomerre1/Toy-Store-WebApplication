@@ -43,6 +43,7 @@ async function login(credentials) {
 }
 
 async function update(credentials) {
+    console.log('%c  credentials:', 'color: white;background: red;', credentials);
     // const res = await axios.post('http://localhost:3030/api/auth/login', credentials)
     const user = await httpService.put(`user/${credentials._id}`, credentials)
     sessionStorage.setItem(STORAGE_KEY_LOGGEDIN, JSON.stringify(user))

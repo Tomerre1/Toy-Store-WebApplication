@@ -14,14 +14,17 @@ export class ToyMessages extends React.Component {
         typingMsg: null,
     }
     elRef = React.createRef();
+    elContainerRef = React.createRef();
 
     componentDidMount() {
         socketService.setup()
         socketService.emit('chat topic', this.props.toy._id)
         socketService.on('chat addMsg', this.addMsg)
         socketService.on('chat addTypingMsg', this.addTypingMsg)
+    }
 
-
+    componentDidUpdate() {
+        this.elRef.current.scrollTop = this.elRef.current.scrollHeight;
     }
 
     componentWillUnmount() {
@@ -30,7 +33,6 @@ export class ToyMessages extends React.Component {
         socketService.terminate()
         // clearTimeout(this.timeout)
     }
-
 
     addMsg = newMsg => {
         newMsg.writer = (this.state.user && newMsg.user === this.state.user.fullname) ? 'person' : 'ai'
@@ -67,7 +69,7 @@ export class ToyMessages extends React.Component {
     onSubmitMessage = (e) => {
         e.preventDefault()
         const { message, user } = this.state
-        const date = new Date().toLocaleString()
+        const date = new Date().toLocaleString('he-IL')
         message.writer = 'person'
         const from = user?.fullname || 'Guest'
         const text = `${from}: ${message.text}`
@@ -79,7 +81,6 @@ export class ToyMessages extends React.Component {
             message: { text: '', date: null },
 
         }))
-        this.scrollToBottom()
     }
 
     aiResponse = () => {
@@ -87,7 +88,7 @@ export class ToyMessages extends React.Component {
         const { messages } = this.state
         const newMessage = {
             text: 'Support: Yes honey!',
-            date: new Date().toLocaleString(),
+            date: new Date().toLocaleString('he-IL'),
             writer: 'ai'
         }
         setTimeout(() => {
@@ -100,24 +101,23 @@ export class ToyMessages extends React.Component {
     }
 
     scrollToBottom = () => {
-        console.log('%c  this.elRef.current.scrollHeight:', 'color: white;background: red;', this.elRef);
         this.elRef.current.scroll({
             top: this.elRef.current.scrollHeight,
             behavior: "smooth",
         });
-        // document.getElementById('messages').scrollIntoView({ behavior: 'smooth', top: 'bottom' });
+
     };
 
     render() {
         const { messages, message, typingMsg } = this.state
         return (
-            <div className="chat-window flex">
-                <div className="chat-box">
+            <div className="chat-window flex"  >
+                <div className="chat-box" ref={this.elContainerRef}>
                     <h1>Lets Chat</h1>
                     {typingMsg && <p>{typingMsg}</p>}
-                    <div className="chat-content" id="messages" ref={this.elRef}>
+                    <ul className="chat-content" ref={this.elRef}>
                         <ToyMessageList messages={messages} />
-                    </div>
+                    </ul>
                     <div className="chat-controller" >
                         <form className="flex justify-space-between" onSubmit={this.onSubmitMessage}>
                             <TextField required variant="outlined" label="Chat with me" type="text" name="chat-input" value={message.text} onChange={this.onChangeMessage} />

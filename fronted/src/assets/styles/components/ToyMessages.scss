@@ -17,10 +17,12 @@
     flex-direction: column;
     justify-content: center;
     gap: 20px;
+    // overflow: auto;
 }
 .chat-window .chat-box .chat-content {
-    max-height: 250px;
     overflow-y: scroll;
+    min-height: 300px;
+    max-height: 400px;
 }
 
 .chat-controller {

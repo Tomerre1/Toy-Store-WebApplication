@@ -23,6 +23,7 @@ export class _ToyDetails extends React.Component {
     async componentDidMount() {
         const { toyId } = this.props.match.params
         const toy = await toyService.getById(toyId)
+        console.log('%c  toy:', 'color: white;background: red;', toy);
         await this.props.loadReviews({ toyId })
         this.setState(prevState => ({ ...prevState, toy }))
         document.body.addEventListener("keydown", this.escFunction, false);
@@ -63,8 +64,6 @@ export class _ToyDetails extends React.Component {
 
     addToCart = async () => {
         await this.props.onAddCart(this.props.user, this.state.toy)
-        console.log('%c  this.state.toy:', 'color: white;background: red;', this.state.toy);
-        console.log('%c  this.props.user:', 'color: white;background: red;', this.props.user);
     }
 
     render() {
@@ -121,7 +120,7 @@ export class _ToyDetails extends React.Component {
                         {user && <button className="back" onClick={this.toggleReviewAdd}>
                             <span>Add Review</span>
                         </button>}
-                        {user && this.state.toy?.inStock.value && <button className="back" onClick={this.addToCart}>
+                        {user && this.state.toy?.inStock && <button className="back" onClick={this.addToCart}>
                             <span>Add To Cart</span>
                         </button>}
                     </div>

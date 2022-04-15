@@ -64,7 +64,7 @@ export function onEditUser(user) {
     }
 }
 export function onAddCart(user, toy) {
-    return (dispatch) => {
+    return async (dispatch) => {
         userService.update({ ...user, cart: [...user.cart, toy] })
             .then(() => dispatch({
                 type: 'ADD_CART',
@@ -78,17 +78,25 @@ export function onAddCart(user, toy) {
     }
 }
 export function onDeleteItemCart(user, toy) {
-    return (dispatch) => {
-        userService.update({ ...user, cart: user.cart.filter(currToy => currToy._id !== toy._id) })
-            .then(() => dispatch({
-                type: 'REMOVE_CART',
-                user,
-                toy
-            }))
-            .catch(err => {
-                showErrorMsg('Cannot update')
-                console.log('Cannot update user', err)
-            })
+    console.log('%c  user.cart.filter(currToy => currToy._id !== toy._id):', 'color: white;background: red;', user.cart.filter(currToy => currToy._id !== toy._id));
+    return async (dispatch) => {
+        try {
+            userService.update({ ...user, cart: user.cart.filter(currToy => currToy._id !== toy._id) })
+                .then(() => {
+                    dispatch({
+                        type: 'REMOVE_CART',
+                        user,
+                        toy
+                    })
+                })
+                .catch(err => {
+                    showErrorMsg('Cannot update')
+                    console.log('Cannot update user', err)
+                })
+        } catch (error) {
+            showErrorMsg('Cannot update')
+            console.log('Cannot update user', error)
+        }
     }
 }
 

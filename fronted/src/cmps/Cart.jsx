@@ -11,7 +11,7 @@ export function Cart() {
             <div class="shopping-cart" style={{ display: isShoppingCart ? 'block' : 'none', width: '320px' }} onClick={(event) => event.stopPropagation()} >
                 <div class="shopping-cart-header">
                     <div>
-                        <i class="fa fa-shopping-cart cart-icon"></i><span class="badge">{user?.cart?.length > 0 ? user.cart.length : ''}</span>
+                        <i class="fa fa-shopping-cart cart-icon"></i>{user?.cart?.length > 0 && <span class="badge">{user.cart.length}</span>}
                     </div>
                     <div class="shopping-cart-total">
                         <span class="lighter-text">Total:</span>
@@ -21,7 +21,7 @@ export function Cart() {
                 <ul class="shopping-cart-items">
                     {user?.cart?.map((item, i) => <CartItemPreview cartItem={item} user={user} key={i} />)}
                 </ul>
-                <a href="#" class="button">Checkout</a>
+                {/* <a href="#" class="button">Checkout</a> */}
             </div>
         </div >
     )

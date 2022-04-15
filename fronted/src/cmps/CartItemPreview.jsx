@@ -1,10 +1,13 @@
 import React from 'react'
 import CloseIcon from '@mui/icons-material/Close';
 import { onDeleteItemCart } from '../store/user.actions'
+import { useDispatch } from 'react-redux'
 export function CartItemPreview({ user, cartItem }) {
-    const handleDelete = async () => {
-        await onDeleteItemCart(user, cartItem)
-        console.log('%c  cartItem:', 'color: white;background: red;', cartItem);
+    const dispatch = useDispatch()
+    const handleDelete = async (event) => {
+        event.preventDefault();
+        event.stopPropagation();
+        dispatch(onDeleteItemCart(user, cartItem))
     }
     return (
         <li class="clearfix">
