@@ -41,7 +41,7 @@ class _ToyUserDetails extends React.Component {
         const { isEdit } = this.state
         if (!user) return <div>Loading...</div>
         return (
-            <div className="card">
+            <div className={`card ${isEdit ? 'user-edit' : ''}`} >
                 <div className="card__header">
                     <div className="card__profile">
                         <Avatar >{(user.fullname && user?.fullname[0].toUpperCase()) || ''}</Avatar>

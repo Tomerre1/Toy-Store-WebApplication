@@ -41,7 +41,7 @@ export class ReviewModal extends React.Component {
         this.props.addToyReview(review)
         this.setState(prevState => ({
             ...prevState,
-            review: { ...prevState.review, rating: null },
+            review: { ...prevState.review, rating: null, comment: '' },
             open: false
         }))
     }

@@ -24,33 +24,25 @@ export class ToyMessages extends React.Component {
     }
 
     componentDidUpdate() {
-        this.elRef.current.scrollTop = this.elRef.current.scrollHeight;
+        this.elRef.current.scroll({
+            top: this.elRef.current.scrollHeight,
+            behavior: "smooth",
+        });
     }
 
     componentWillUnmount() {
         socketService.off('chat addMsg', this.addMsg)
         socketService.off('chat addTypingMsg', this.addTypingMsg)
         socketService.terminate()
-        // clearTimeout(this.timeout)
     }
 
     addMsg = newMsg => {
         newMsg.writer = (this.state.user && newMsg.user === this.state.user.fullname) ? 'person' : 'ai'
         this.setState(prevState => ({ ...prevState, messages: [...prevState.messages, newMsg] }))
-        // if (this.state.isBotMode) this.sendBotResponse();
     }
     addTypingMsg = typingMsg => {
         this.setState(prevState => ({ ...prevState, typingMsg }))
     }
-
-    // sendBotResponse = () => {
-    //     // Handle case: send single bot response (debounce).
-    //     this.timeout && clearTimeout(this.timeout)
-    //     this.timeout = setTimeout(() => {
-    //         this.setState(prevState => ({ msgs: [...prevState.msgs, { from: 'Bot', txt: 'You are amazing!' }] }))
-    //     }, 1500)
-    // }
-
 
     onChangeMessage = (e) => {
         const { value } = e.target

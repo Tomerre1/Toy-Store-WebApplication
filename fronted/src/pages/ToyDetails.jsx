@@ -19,6 +19,7 @@ export class _ToyDetails extends React.Component {
         isChatOpen: false,
         isReviewAdd: false,
     }
+    elRef = React.createRef();
 
     async componentDidMount() {
         const { toyId } = this.props.match.params
@@ -28,6 +29,8 @@ export class _ToyDetails extends React.Component {
         this.setState(prevState => ({ ...prevState, toy }))
         document.body.addEventListener("keydown", this.escFunction, false);
     }
+
+
 
     componentWillUnmount() {
         document.body.removeEventListener("keydown", this.escFunction, false);
@@ -103,7 +106,7 @@ export class _ToyDetails extends React.Component {
 
                     {!user && <p>To write a review please login <Link to="/login"> Here</Link></p>}
 
-                    {reviews.length > 0 && <div className="reviews-container">
+                    {reviews.length > 0 && <div className="reviews-container" >
                         <ReviewList user={user} removeToyReview={this.removeToyReview} reviews={reviews} />
                     </div>
                     }

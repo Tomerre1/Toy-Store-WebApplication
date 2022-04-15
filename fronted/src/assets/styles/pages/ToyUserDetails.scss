@@ -10,6 +10,7 @@
         /* max-height: unset; */
         max-width: unset;
         max-height: 58vh;
+        justify-content: center;
     }
 }
 
@@ -182,6 +183,9 @@
     .card {
         width: 90%;
     }
+    .card.user-edit {
+        width: unset;
+    }
     .navlinks {
         display: none;
     }
@@ -194,5 +198,4 @@
         -ms-flex-pack: center;
         justify-content: center;
     }
-
 }
