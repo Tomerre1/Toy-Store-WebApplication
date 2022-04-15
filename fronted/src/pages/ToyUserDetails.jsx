@@ -8,6 +8,7 @@ import { onEditUser } from '../store/user.actions'
 import { ToyUserEdit } from '../cmps/ToyUserEdit'
 
 import { Link } from 'react-router-dom';
+import { Loader } from '../cmps/Loader.jsx';
 
 class _ToyUserDetails extends React.Component {
     state = {
@@ -39,7 +40,7 @@ class _ToyUserDetails extends React.Component {
     render() {
         const { user, reviews } = this.props
         const { isEdit } = this.state
-        if (!user) return <div>Loading...</div>
+        if (!user) return <Loader />
         return (
             <div className={`card ${isEdit ? 'user-edit' : ''}`} >
                 <div className="card__header">

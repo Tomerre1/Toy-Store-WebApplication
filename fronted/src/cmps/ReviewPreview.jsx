@@ -3,9 +3,9 @@ import PropTypes from 'prop-types'
 import { utilService } from '../services/util.service'
 import { Rating } from '@mui/material';
 import { Avatar } from '@material-ui/core';
-
+import { Loader } from './Loader'
 export function ReviewPreview({ review, removeToyReview, user }) {
-    if (!review.toy) { return <div>Loading...</div> }
+    if (!review.toy) { return <Loader /> }
     return (
 
         <section className="review">

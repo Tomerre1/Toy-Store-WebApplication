@@ -1,7 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import { TextField } from '@material-ui/core'
-
+import { Loader } from './Loader'
 
 class _ToyUserEdit extends React.Component {
     state = {
@@ -25,7 +25,7 @@ class _ToyUserEdit extends React.Component {
 
     render() {
         const { user } = this.state
-        if (!user) return <div> Loading...</div>
+        if (!user) return <Loader />
         return (
             <form className="edit-user" onSubmit={this.onSubmit}>
                 <TextField value={user.username} type='text' variant="outlined" label="Edit Username" name='username' onChange={this.handleChange} />

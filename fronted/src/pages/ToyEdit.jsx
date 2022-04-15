@@ -4,6 +4,7 @@ import PropTypes from 'prop-types'
 import { toyService } from '../services/toy.service'
 import { onEditToy } from '../store/toy.actions'
 import { Button, Input } from '@material-ui/core';
+import { Loader } from '../cmps/Loader'
 
 
 class _ToyEdit extends React.Component {
@@ -32,10 +33,8 @@ class _ToyEdit extends React.Component {
 
   render() {
     const { toy } = this.state
-    if (!toy) return <div> Loading...</div>
+    if (!toy) return <Loader />
     return (
-
-
       <div className="container">
         <div className="product-image">
           <img src={`https://robohash.org/${toy.name}`} alt="" className="product-logo" />

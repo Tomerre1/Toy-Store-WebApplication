@@ -10,7 +10,7 @@ import { ToyPopup } from '../cmps/ToyPopup'
 import { addReview, loadReviews, removeReview } from '../store/review.actions'
 import ChatRoundedIcon from '@mui/icons-material/ChatRounded';
 import { onAddCart } from '../store/user.actions'
-
+import { Loader } from '../cmps/Loader'
 
 
 export class _ToyDetails extends React.Component {
@@ -72,7 +72,7 @@ export class _ToyDetails extends React.Component {
     render() {
         const { toy, isChatOpen, isReviewAdd } = this.state
         const { user, reviews } = this.props
-        if (!toy) return <div> Loading from Toy Details...</div>
+        if (!toy) return <Loader />
         return (
             <div className="container">
                 <div className="product-image">
