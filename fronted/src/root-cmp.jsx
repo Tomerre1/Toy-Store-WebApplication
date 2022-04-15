@@ -3,9 +3,21 @@ import { Switch, Route } from 'react-router'
 import routes from './routes.js'
 import { Accessibility } from 'accessibility/src/main';
 import { ToyHeader } from './cmps/ToyHeader.jsx'
+import { UseViewport } from './Hooks/UseViewport'
+
 
 export class RootCmp extends React.Component {
     componentDidMount() {
+        const mobileOption = {
+            icon: {
+                position: {
+                    bottom: { size: 90, units: 'px' },
+                    right: { size: 0, units: 'px' },
+                    type: 'fixed'
+                }
+            }
+
+        }
         const options = {
             icon: {
                 position: {
@@ -15,7 +27,7 @@ export class RootCmp extends React.Component {
                 }
             }
         }
-        window.addEventListener('load', function () { new Accessibility(options); }, false);
+        window.addEventListener('load', function () { new Accessibility(window.innerWidth >= 768 ? options : mobileOption); }, false);
     }
 
     componentWillUnmount() {

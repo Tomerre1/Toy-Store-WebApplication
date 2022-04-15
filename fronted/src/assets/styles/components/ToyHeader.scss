@@ -61,7 +61,7 @@
             margin: auto;
             position: absolute;
             .shopping-cart {
-                z-index: 20;
+                z-index: 200;
                 display: none;
                 margin: 20px 0;
                 float: right;
@@ -177,7 +177,7 @@
     position: fixed;
     top: 14px;
     right: 20px;
-    z-index: 20;
+    z-index: 300;
     display: none;
     cursor: pointer;
     position: absolute;
@@ -224,7 +224,7 @@
     list-style: none;
     display: flex;
     flex-flow: row nowrap;
-    z-index: 1;
+    z-index: 200;
     margin: 0;
     gap: 20px;
     align-items: center;

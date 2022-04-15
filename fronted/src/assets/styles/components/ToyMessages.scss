@@ -72,7 +72,7 @@ article {
 
 .chat-button {
     position: fixed;
-    bottom: 0;
+    bottom: 148px;
     right: 0;
     border-radius: 50%;
     color: white;
@@ -85,6 +85,9 @@ article {
     align-items: center;
     justify-content: center;
     flex-direction: column;
+    @include for-normal-layout {
+        bottom: 0;
+    }
 }
 
 .popup {

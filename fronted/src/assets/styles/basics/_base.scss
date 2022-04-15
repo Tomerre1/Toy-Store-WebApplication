@@ -84,3 +84,7 @@ a {
         transform: scale(1) rotate(360deg);
     }
 }
+
+._access-icon.material-icons {
+    z-index: 100 !important;
+}
