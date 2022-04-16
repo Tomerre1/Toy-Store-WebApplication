@@ -1,13 +1,17 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { Switch, Route } from 'react-router'
 import routes from './routes.js'
 import { Accessibility } from 'accessibility/src/main';
 import { ToyHeader } from './cmps/ToyHeader.jsx'
-import { UseViewport } from './Hooks/UseViewport'
+import { useDispatch, useSelector } from 'react-redux'
+import { onLogin, onSignup } from './store/user.actions.js'
+import { utilService } from './services/util.service.js';
 
 
-export class RootCmp extends React.Component {
-    componentDidMount() {
+export function RootCmp(props) {
+    console.log('%c  props:', 'color: white;background: red;', props);
+    const dispatch = useDispatch()
+    useEffect(() => {
         const mobileOption = {
             icon: {
                 position: {
@@ -27,25 +31,29 @@ export class RootCmp extends React.Component {
                 }
             }
         }
+
+        async function guestLoginFirst() {
+            await dispatch(onLogin({ username: `G-FPIeze`, password: 'Guest', fullname: '' }))
+        }
+        guestLoginFirst()
         window.addEventListener('load', function () { new Accessibility(window.innerWidth >= 768 ? options : mobileOption); }, false);
-    }
+        return () => {
+            window.removeEventListener('load', function () { new Accessibility(); }, false);
+        }
+    }, [])
 
-    componentWillUnmount() {
-        window.removeEventListener('load', function () { new Accessibility(); }, false);
-    }
+    // {fullname: '', username: 'admin2', password: 'admin'}
 
-    render() {
-        return (
-            <div >
-                <ToyHeader />
-                <main className="main-container">
-                    <Switch>
-                        {routes.map(route => <Route key={route.path} exact component={route.component} path={route.path} />)}
-                    </Switch>
-                </main>
-            </div>
-        )
-    }
+    return (
+        <div >
+            <ToyHeader />
+            <main className="main-container">
+                <Switch>
+                    {routes.map(route => <Route key={route.path} exact component={route.component} path={route.path} />)}
+                </Switch>
+            </main>
+        </div>
+    )
 }
 
 
