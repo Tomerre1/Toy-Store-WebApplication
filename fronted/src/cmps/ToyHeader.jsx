@@ -13,26 +13,43 @@ class _ToyHeader extends React.Component {
         open: false,
         isMobile: false,
     }
-
+    ref = React.createRef();
+    cartRef = React.createRef();
     componentDidMount() {
         if (window.innerWidth < 768) {
             this.setState({ ...this.state, isMobile: true })
         }
         window.addEventListener('resize', this.handleResize)
+        document.addEventListener("click", this.onBodyClick);
     }
 
     componentWillUnmount() {
         window.removeEventListener('resize', this.handleResize)
+        document.removeEventListener("click", this.onBodyClick);
     }
+
+    onBodyClick = (event) => {
+        if (this.ref && this.ref?.current?.contains(event.target)) {
+            return;
+        }
+        if (this.cartRef && this.cartRef?.current?.contains(event.target)) {
+            return;
+        }
+        this.setState({ open: false })
+        this.props.setIsShoppingCart(false)
+    };
 
     onLogin = (credentials) => {
         this.props.onLogin(credentials)
     }
+
     onSignup = (credentials) => {
         this.props.onSignup(credentials)
     }
+
     onLogout = () => {
         this.props.onLogout()
+        this.toggleOpen()
     }
 
     toggleOpen = () => {
@@ -50,14 +67,15 @@ class _ToyHeader extends React.Component {
     toggleCart = () => {
         this.props.setIsShoppingCart(!this.props.isShoppingCart)
     }
+
     render() {
         const { user } = this.props
         return (
             <>
-                <div className="navbar">
+                <div className="navbar" ref={this.ref}>
                     <div className="logo">
                         <Link to="/"><img src={toyLogo} alt="logo" /></Link>
-                        {user && <a className="cart-symbol" id="cart" onClick={this.toggleCart} style={{ width: this.state.isMobile ? '240px' : '320px' }}>
+                        {user && <a className="cart-symbol" id="cart" onClick={this.toggleCart} ref={this.cartRef} style={{ width: this.state.isMobile ? '240px' : '320px' }}>
                             <i class="fa fa-shopping-cart"></i> Cart
                             {user?.cart?.length > 0 && <span class="badge">{user.cart.length}</span>}
                             <Cart isMobile={this.state.isMobile} />
