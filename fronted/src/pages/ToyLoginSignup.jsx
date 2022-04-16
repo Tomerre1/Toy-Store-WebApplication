@@ -23,7 +23,7 @@ class _ToyLoginSignup extends React.Component {
         { heading: 'Want to be admin?', content: 'Login with this credentials Username: admin and Password: admin ' },
     ]
     componentDidMount() {
-        if (this.props.user) this.props.history.push('/')
+        if (this.props.user && this.props.user?.fullname !== 'Guest') this.props.history.push('/')
     }
 
     toggleSignup = () => {

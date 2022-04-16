@@ -9,8 +9,8 @@ export const RightNav = ({ open, toggleOpen, user, onLogout }) => {
       <NavLink onClick={toggleOpen} to="/review">Reviews</NavLink>
       <NavLink onClick={toggleOpen} to="/about">About</NavLink>
       <NavLink onClick={toggleOpen} to="/chart">Chart</NavLink>
-      {user && <NavLink onClick={onLogout} to="/login">Logout</NavLink>}
-      {!user && <NavLink onClick={toggleOpen} to="/login">Login</NavLink>}
+      {((user && user?.fullname !== 'Guest')) && <NavLink onClick={onLogout} to="/login">Logout</NavLink>}
+      {(!user || (user && user.fullname === 'Guest')) && <NavLink onClick={toggleOpen} to="/login">Login</NavLink>}
     </ul>
   )
 }
