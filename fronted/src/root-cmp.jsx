@@ -31,11 +31,6 @@ export function RootCmp(props) {
                 }
             }
         }
-
-        async function guestLoginFirst() {
-            await dispatch(onLogin({ username: `G-FPIeze`, password: 'Guest', fullname: '' }))
-        }
-        guestLoginFirst()
         window.addEventListener('load', function () { new Accessibility(window.innerWidth >= 768 ? options : mobileOption); }, false);
         return () => {
             window.removeEventListener('load', function () { new Accessibility(); }, false);
